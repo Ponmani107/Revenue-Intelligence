@@ -1,0 +1,10 @@
+{
+  "framework": null,
+  "rewrites": [
+    { "source": "/", "destination": "/candidate/app/index.html" },
+    { "source": "/styles.css", "destination": "/candidate/app/styles.css" },
+    { "source": "/data.js", "destination": "/candidate/app/data.js" },
+    { "source": "/app.js", "destination": "/candidate/app/app.js" },
+    { "source": "/read_transcript.js", "destination": "/candidate/app/read_transcript.js" }
+  ]
+}

@@ -162,11 +162,4 @@ Every headline number in the dashboard has an explicit, verified denominator:
 3. **Five Slides:** `candidate/presentation.pptx` (and browser-viewable `candidate/slides.html` / `presentation.pdf`).
 4. **README:** `candidate/README.md` (this document).
 5. **Screen Recording Walkthrough Guide:** Provided in Section 10 below for the 3-minute continuous narration video.
-
----
-
-
-
-- **2:50 – 3:00 | Conclusion & Exports:**  
-  *Screen:* Switch to **Exports & Manifest**.  
-  *Narration:* "Finally, all 44 records and assigned routes are reflected in our manifest table and exported across our 7 route folders, with JSON and CSV manifests and downloadable ZIP. Thank you."
+ "Finally, all 44 records and assigned routes are reflected in our manifest table and exported across our 7 route folders, with JSON and CSV manifests and downloadable ZIP. Thank you."

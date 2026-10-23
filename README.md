@@ -165,26 +165,7 @@ Every headline number in the dashboard has an explicit, verified denominator:
 
 ---
 
-## 10. 3-Minute Screen Recording Narration Guide
 
-Use this concise script while recording your continuous 3-minute screen capture:
-
-- **0:00 – 0:45 | Overview & Manager Workflow (Dashboard & Brief):**  
-  *Screen:* Open `candidate/app/index.html` on the **Dashboard** view.  
-  *Narration:* "Welcome to the SpendNest Revenue Intelligence Inbox for August 21st, 2026. As a sales manager, my first need is clarity. Our dashboard displays 44 distinct source records across 30 calls and 14 meetings. We disclose our denominators honestly: our connection rate is 36.7% based on source telemetry, and transcript coverage is 40.9% post-update—we don't hide the 26 calls or meetings that have no audio. Filtering by rep Meera or Arun instantly breaks down conversations versus short dials. Clicking into our Manager Brief shows today's synthesized coaching priorities and deal next steps."
-
-- **0:45 – 1:40 | The Difficult Routing Decision (Inbox & Meeting M02):**  
-  *Screen:* Switch to the **Conversation Inbox** and select record `M02` (*Crestview Partners*).  
-  *Narration:* "A difficult routing challenge is Meeting M02. It’s a hybrid conversation: Crestview discusses referring overseas accounting clients for partner commissions, but also asks for a SpendNest corporate account and 40 virtual cards for their own firm. Single routing would drop either the partnership or the active sales opportunity. Our system routes M02 to both Vendor/Partner and Deal Next Steps. In the detail pane, we see the exact transcript citations and next actions for both owners. In our Exports tab, M02 is exported into both folders without losing context."
-
-- **1:40 – 2:50 | The Replay, Duplicate & Update Test (Import & Replay Tab):**  
-  *Screen:* Navigate to **Import & Replay**. Click **"Reset All Data"**.  
-  *Narration:* "Now let's demonstrate the required replay sequence.  
-  1. First, we load `01_initial.json`. We see 44 unique records and 17 usable transcripts. Meeting M07 currently has no transcript.  
-  2. Next, we repeat that exact import in shuffled order. Notice the total records remains strictly 44—zero duplicates, zero inflated activity counts.  
-  3. Now, we simulate human judgment. We go to M07 in the Inbox and manually reassign its route to Deal Next Steps. The override badge appears.  
-  4. Now we import `02_update.json`. M07's late transcript arrives with 28 turns. Notice our total record count is still 44, and our manual route assignment survived!  
-  5. Finally, we run our preserve judgment test by re-importing the older initial batch. Because the update had revision 2 and the initial batch had revision 1, the older data is safely ignored, and our manual correction remains in effect."
 
 - **2:50 – 3:00 | Conclusion & Exports:**  
   *Screen:* Switch to **Exports & Manifest**.  

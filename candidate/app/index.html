@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revenue Intelligence Inbox — SpendNest</title>
+  <meta name="description" content="Sales manager workspace for reviewing calls, meetings, transcripts, routing, and activity for SpendNest on 21 August 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">RI</div>
+        <div class="brand-text">
+          <span class="brand-name">Revenue Intelligence</span>
+          <span class="brand-sub">SpendNest · 21 Aug 2026</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="dashboard" id="nav-dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </button>
+        <button class="nav-item" data-view="inbox" id="nav-inbox">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3H10l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+          Conversation Inbox
+          <span class="nav-badge" id="badge-inbox">44</span>
+        </button>
+        <button class="nav-item" data-view="brief" id="nav-brief">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Manager Brief
+        </button>
+        <button class="nav-item" data-view="exports" id="nav-exports">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Exports & Manifest
+        </button>
+        <button class="nav-item" data-view="import" id="nav-import">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Import & Replay
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="data-state" id="data-state-indicator">
+          <div class="state-dot" id="state-dot"></div>
+          <span id="state-text">No data loaded</span>
+        </div>
+        <button class="btn-reset" id="btn-reset" title="Clear all data and start fresh">Reset All Data</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main id="main-content">
+
+      <!-- ===== DASHBOARD VIEW ===== -->
+      <section id="view-dashboard" class="view active">
+        <div class="view-header">
+          <h1>Activity Dashboard</h1>
+          <div class="header-controls">
+            <div class="filter-group">
+              <label>Person</label>
+              <select id="filter-person">
+                <option value="all">All People</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Type</label>
+              <select id="filter-type">
+                <option value="all">All Types</option>
+                <option value="call">Calls Only</option>
+                <option value="meeting">Meetings Only</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="empty-state" id="dashboard-empty">
+          <div class="empty-icon">📊</div>
+          <h2>No data loaded yet</h2>
+          <p>Go to <strong>Import & Replay</strong> to load the initial batch, or use the quick-load button below.</p>
+          <button class="btn-primary" id="quick-load-btn">Quick Load Both Batches</button>
+        </div>
+
+        <div id="dashboard-content" style="display:none">
+          <!-- Metric cards -->
+          <div class="metrics-grid" id="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-label">Selected Records</div>
+              <div class="metric-value" id="m-total">0</div>
+              <div class="metric-sub">44 distinct source records (post-update)</div>
+            </div>
+            <div class="metric-card highlight">
+              <div class="metric-label">Calls</div>
+              <div class="metric-value" id="m-calls">0</div>
+              <div class="metric-sub" id="m-calls-sub"></div>
+            </div>
+            <div class="metric-card highlight-purple">
+              <div class="metric-label">Meetings</div>
+              <div class="metric-value" id="m-meetings">0</div>
+              <div class="metric-sub" id="m-meetings-sub"></div>
+            </div>
+            <div class="metric-card highlight-green">
+              <div class="metric-label">Transcript Coverage</div>
+              <div class="metric-value" id="m-coverage">0%</div>
+              <div class="metric-sub" id="m-coverage-sub"></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Connection Rate</div>
+              <div class="metric-value" id="m-connect">0%</div>
+              <div class="metric-sub" id="m-connect-sub">Source-reported (is_connected=true / non-null)</div>
+            </div>
+            <div class="metric-card highlight-amber">
+              <div class="metric-label">Needs Attention</div>
+              <div class="metric-value" id="m-attention">0</div>
+              <div class="metric-sub">Manual review / routing required</div>
+            </div>
+          </div>
+
+          <!-- Activity by person -->
+          <div class="dashboard-section">
+            <h2>Activity by Rep / Organiser <span class="section-note">(calls use rep_name; meetings use organizer_email — organiser ≠ salesperson or attendee)</span></h2>
+            <div class="person-table-wrap">
+              <table class="data-table" id="person-table">
+                <thead>
+                  <tr>
+                    <th>Person</th>
+                    <th>Role Hint</th>
+                    <th>Calls</th>
+                    <th>Meetings (organised)</th>
+                    <th>Transcripts Available</th>
+                    <th>Connected Calls</th>
+                    <th>Conversations</th>
+                  </tr>
+                </thead>
+                <tbody id="person-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Routing summary -->
+          <div class="dashboard-section">
+            <h2>Routing Summary <span class="section-note">(records can have multiple routes; route assignments may exceed unique record count)</span></h2>
+            <div class="route-cards" id="route-cards"></div>
+          </div>
+
+          <!-- Coverage breakdown -->
+          <div class="dashboard-section">
+            <h2>Transcript Coverage Breakdown</h2>
+            <div class="coverage-grid" id="coverage-grid"></div>
+          </div>
+
+          <!-- Exceptions -->
+          <div class="dashboard-section">
+            <h2>Exceptions &amp; Items Needing Attention</h2>
+            <div id="exceptions-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== INBOX VIEW ===== -->
+      <section id="view-inbox" class="view">
+        <div class="view-header">
+          <h1>Conversation Inbox</h1>
+          <div class="header-controls">
+            <div class="filter-group">
+              <label>Route</label>
+              <select id="inbox-filter-route">
+                <option value="all">All Routes</option>
+                <option value="sales-coaching">Sales Coaching</option>
+                <option value="deal-next-steps">Deal Next Steps</option>
+                <option value="customer-followup">Customer Follow-up</option>
+                <option value="vendor-partner">Vendor / Partner</option>
+                <option value="internal-ops">Internal / Ops</option>
+                <option value="no-content">No Content</option>
+                <option value="needs-review">Needs Review</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Type</label>
+              <select id="inbox-filter-type">
+                <option value="all">All</option>
+                <option value="call">Calls</option>
+                <option value="meeting">Meetings</option>
+              </select>
+            </div>
+            <div class="search-box">
+              <input type="text" id="inbox-search" placeholder="Search ref, rep, title…" />
+            </div>
+          </div>
+        </div>
+
+        <div class="empty-state" id="inbox-empty">
+          <div class="empty-icon">📬</div>
+          <h2>No records loaded</h2>
+          <p>Import data first via the <strong>Import &amp; Replay</strong> tab.</p>
+        </div>
+
+        <div id="inbox-content" style="display:none">
+          <div class="inbox-layout">
+            <div class="inbox-list" id="inbox-list"></div>
+            <div class="inbox-detail" id="inbox-detail">
+              <div class="detail-placeholder">
+                <div class="empty-icon">👈</div>
+                <p>Select a conversation to inspect it</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MANAGER BRIEF VIEW ===== -->
+      <section id="view-brief" class="view">
+        <div class="view-header">
+          <h1>Manager Brief — 21 August 2026</h1>
+          <div class="header-controls">
+            <span class="badge-info">Asia/Kolkata · Pre-generated analysis · Post-update state</span>
+          </div>
+        </div>
+
+        <div class="empty-state" id="brief-empty">
+          <div class="empty-icon">📋</div>
+          <h2>No data loaded</h2>
+          <p>Import data first to view the manager brief.</p>
+        </div>
+
+        <div id="brief-content" style="display:none">
+          <div class="brief-container" id="brief-container"></div>
+        </div>
+      </section>
+
+      <!-- ===== EXPORTS VIEW ===== -->
+      <section id="view-exports" class="view">
+        <div class="view-header">
+          <h1>Exports &amp; Manifest</h1>
+          <div class="header-controls">
+            <button class="btn-primary" id="btn-export-json">Download JSON Manifest</button>
+            <button class="btn-secondary" id="btn-export-csv">Download CSV Manifest</button>
+            <button class="btn-secondary" id="btn-export-zip">Download All Outputs (ZIP)</button>
+          </div>
+        </div>
+
+        <div class="empty-state" id="exports-empty">
+          <div class="empty-icon">📦</div>
+          <h2>No data to export</h2>
+          <p>Import data first.</p>
+        </div>
+
+        <div id="exports-content" style="display:none">
+          <div class="exports-info">
+            <div class="info-card">
+              <h3>Folder Structure</h3>
+              <pre class="folder-tree" id="folder-tree"></pre>
+            </div>
+            <div class="info-card">
+              <h3>Manifest Summary</h3>
+              <div id="manifest-summary"></div>
+            </div>
+          </div>
+          <div class="dashboard-section">
+            <h2>Active Manifest Entries <span class="section-note">(current routing state; repeat export does not duplicate active entries)</span></h2>
+            <div class="table-wrap">
+              <table class="data-table" id="manifest-table">
+                <thead>
+                  <tr>
+                    <th>Ref</th>
+                    <th>Source Type</th>
+                    <th>Source ID</th>
+                    <th>Revision</th>
+                    <th>Route(s)</th>
+                    <th>Output Path(s)</th>
+                    <th>Review State</th>
+                    <th>Manual Override</th>
+                    <th>Analysis Freshness</th>
+                  </tr>
+                </thead>
+                <tbody id="manifest-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== IMPORT VIEW ===== -->
+      <section id="view-import" class="view">
+        <div class="view-header">
+          <h1>Import &amp; Replay</h1>
+        </div>
+
+        <div class="import-layout">
+          <div class="import-left">
+            <div class="import-card">
+              <h2>Load Data Files</h2>
+              <p class="import-desc">Upload the JSON batch files. Identity is <code>(source_type, source_id)</code>. Repeat imports are safe — no duplicates are created. Older revisions are ignored.</p>
+
+              <div class="upload-zone" id="upload-zone" ondragover="event.preventDefault()" ondrop="handleDrop(event)">
+                <div class="upload-icon">📁</div>
+                <p>Drag &amp; drop <code>01_initial.json</code> or <code>02_update.json</code> here</p>
+                <p>or</p>
+                <label class="btn-primary" for="file-input">Choose File</label>
+                <input type="file" id="file-input" accept=".json" style="display:none" onchange="handleFileInput(event)" />
+              </div>
+
+              <div class="quick-actions">
+                <h3>Quick Actions (uses bundled data)</h3>
+                <div class="action-buttons">
+                  <button class="btn-action" id="load-initial-btn" onclick="loadBundledFile('initial')">
+                    <span class="btn-icon">📥</span>
+                    Load Initial Batch (01_initial.json)
+                    <span class="btn-sub">44 records, revision 1</span>
+                  </button>
+                  <button class="btn-action" id="load-update-btn" onclick="loadBundledFile('update')">
+                    <span class="btn-icon">🔄</span>
+                    Load Update Batch (02_update.json)
+                    <span class="btn-sub">M07 transcript, revision 2</span>
+                  </button>
+                  <button class="btn-action" id="load-both-btn" onclick="loadBundledFile('both')">
+                    <span class="btn-icon">⚡</span>
+                    Load Both (recommended)
+                    <span class="btn-sub">44 records, post-update state</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="import-card">
+              <h2>Replay Sequence</h2>
+              <p class="import-desc">Reproduce the full DATA_CONTRACT replay sequence. Each step shows the expected result.</p>
+              <div class="replay-steps" id="replay-steps">
+                <div class="replay-step" id="step-1">
+                  <div class="step-num">1</div>
+                  <div class="step-body">
+                    <strong>Initial import</strong> — Import 01_initial.json
+                    <div class="step-expect">Expected: 44 unique records, 17 usable transcripts</div>
+                    <button class="btn-step" onclick="loadBundledFile('initial')">Run</button>
+                  </div>
+                  <div class="step-result" id="step-1-result"></div>
+                </div>
+                <div class="replay-step" id="step-2">
+                  <div class="step-num">2</div>
+                  <div class="step-body">
+                    <strong>Repeat import</strong> — Import 01_initial.json again (shuffled order)
+                    <div class="step-expect">Expected: Still 44 unique records — no duplicates, no inflated counts</div>
+                    <button class="btn-step" onclick="repeatImport()">Run</button>
+                  </div>
+                  <div class="step-result" id="step-2-result"></div>
+                </div>
+                <div class="replay-step" id="step-3">
+                  <div class="step-num">3</div>
+                  <div class="step-body">
+                    <strong>Manual correction</strong> — Change M07's route in the Inbox
+                    <div class="step-expect">Expected: Correction saved, manual-override flag set</div>
+                    <button class="btn-step" onclick="goToM07()">Go to M07</button>
+                  </div>
+                  <div class="step-result" id="step-3-result"></div>
+                </div>
+                <div class="replay-step" id="step-4">
+                  <div class="step-num">4</div>
+                  <div class="step-body">
+                    <strong>Update import</strong> — Import 02_update.json (M07 transcript, rev 2)
+                    <div class="step-expect">Expected: M07 gets its transcript, record count stays 44 total, manual route preserved, analysis marked stale</div>
+                    <button class="btn-step" onclick="loadBundledFile('update')">Run</button>
+                  </div>
+                  <div class="step-result" id="step-4-result"></div>
+                </div>
+                <div class="replay-step" id="step-5">
+                  <div class="step-num">5</div>
+                  <div class="step-body">
+                    <strong>Preserve judgment</strong> — Import 01_initial.json again after the update
+                    <div class="step-expect">Expected: Old revision ignored; M07 transcript + manual route still in effect</div>
+                    <button class="btn-step" onclick="preserveTest()">Run</button>
+                  </div>
+                  <div class="step-result" id="step-5-result"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="import-right">
+            <div class="import-card">
+              <h2>Import Log</h2>
+              <div class="import-log" id="import-log">
+                <div class="log-empty">No imports yet. Load a file to begin.</div>
+              </div>
+            </div>
+
+            <div class="import-card">
+              <h2>Current State</h2>
+              <div id="state-summary">
+                <div class="state-row">
+                  <span>Total records:</span><strong id="ss-total">—</strong>
+                </div>
+                <div class="state-row">
+                  <span>Calls:</span><strong id="ss-calls">—</strong>
+                </div>
+                <div class="state-row">
+                  <span>Meetings:</span><strong id="ss-meetings">—</strong>
+                </div>
+                <div class="state-row">
+                  <span>Usable transcripts:</span><strong id="ss-transcripts">—</strong>
+                </div>
+                <div class="state-row">
+                  <span>Last batch revision:</span><strong id="ss-revision">—</strong>
+                </div>
+                <div class="state-row">
+                  <span>Manual corrections:</span><strong id="ss-corrections">—</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Detail Modal -->
+  <div id="detail-modal" class="modal-overlay" style="display:none">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

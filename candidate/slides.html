@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SpendNest Revenue Intelligence — 5 Slides Executive Presentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    @page {
+      size: 13.333in 7.5in;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .slide {
+      width: 13.333in;
+      height: 7.5in;
+      page-break-after: always;
+      background: #f8fafc;
+      padding: 0.5in 0.8in;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.25in;
+      margin-bottom: 0.3in;
+    }
+
+    .title-area h1 {
+      font-size: 24pt;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .title-area p {
+      font-size: 11pt;
+      color: #64748b;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .badge-slide {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 10pt;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3in;
+      flex: 1;
+    }
+
+    .col-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25in;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0.25in 0.3in;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .card-tag {
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .tag-blue { color: #2563eb; }
+    .tag-teal { color: #0d9488; }
+    .tag-amber { color: #d97706; }
+    .tag-purple { color: #7c3aed; }
+
+    ul.bullet-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul.bullet-list li {
+      font-size: 9.5pt;
+      line-height: 1.45;
+      color: #334155;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #94a3b8;
+      font-weight: bold;
+    }
+
+    .finding-block {
+      background: #f8fafc;
+      border-left: 3px solid #2563eb;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 10px;
+    }
+
+    .finding-title {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .finding-quote {
+      font-size: 8.5pt;
+      font-style: italic;
+      color: #475569;
+      margin-bottom: 3px;
+    }
+
+    .finding-impact {
+      font-size: 8.5pt;
+      color: #0d9488;
+      font-weight: 600;
+    }
+
+    .code-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      background: #f1f5f9;
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1 -->
+  <div class="slide">
+    <div class="header">
+      <div class="title-area">
+        <h1>1. Manager Problem Solved &amp; Core Findings</h1>
+        <p>SpendNest Revenue Intelligence Inbox · 21 August 2026 Executive Brief</p>
+      </div>
+      <div class="badge-slide">SLIDE 1 OF 5</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">The Operational Challenge</div>
+        <div class="card-tag tag-blue">Operational Context</div>
+        <ul class="bullet-list">
+          <li><strong>Incoming Data Chaos:</strong> 44 fragmented records (30 phone calls, 14 meetings) arrive across disparate telephony and video conferencing sources with missing transcripts, asynchronous updates, and misaligned metadata.</li>
+          <li><strong>Unreliable Automated Labels:</strong> Stored summaries are legacy system outputs that fail to reflect actual conversations (e.g. cold calls marked "stored" without objection tags; silent recordings hiding cancellations; late transcripts arriving hours after calls conclude).</li>
+          <li><strong>Manager Solution Built:</strong> An offline-first, idempotent workspace providing clean activity metrics, honest transcript coverage definitions, multi-destination routing, and evidence-grounded action plans.</li>
+          <li><strong>Strict Verification:</strong> Discloses true denominators (30 calls with 10 conversations; 14 meetings with 8 transcripts post-update). Rejects phantom pipeline estimations.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Three Grounded Source Findings</div>
+        <div class="card-tag tag-teal">Evidence Citations &amp; System Impact</div>
+        
+        <div class="finding-block">
+          <div class="finding-title">1. Cold Outreach Consent &amp; Sourcing Pushback (Call C01)</div>
+          <div class="finding-quote">"I don't know how I ended up on your list. I didn't ask for this call, and I'm not interested... Where did you find my details?" — Pranav, Harborlight Advisory</div>
+          <div class="finding-impact">→ Influenced: Sales Coaching route filter &amp; coaching cards flagging cold outreach consent scripts for rep Arun.</div>
+        </div>
+
+        <div class="finding-block" style="border-left-color: #0d9488;">
+          <div class="finding-title">2. Referral Economics vs API Integration (Meeting M01)</div>
+          <div class="finding-quote">"The activation payment is USD 260 when a referred company gets its account approved... It cannot depend on me manually writing every email. This needs to scale." — Partner A (turns 9 &amp; 18)</div>
+          <div class="finding-impact">→ Influenced: Vendor/Partner route, prompting unique referral link tracking over manual email intros.</div>
+        </div>
+
+        <div class="finding-block" style="border-left-color: #d97706;">
+          <div class="finding-title">3. Multi-Tenant Token Expiry Bug (Meeting M09)</div>
+          <div class="finding-quote">"It says the token has expired. This is the fresh message we just received." — Customer A (turn 9)</div>
+          <div class="finding-impact">→ Influenced: Customer Follow-up exception alerting engineering escalation to unblock Brookmint setup.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <div class="header">
+      <div class="title-area">
+        <h1>2. Interface Design Choices &amp; Deliberate Omissions</h1>
+        <p>Maximizing Manager Utility through Transparent Signals and Honest Uncertainty</p>
+      </div>
+      <div class="badge-slide">SLIDE 2 OF 5</div>
+    </div>
+    <div class="grid-2">
+      <div class="col-stack">
+        <div class="card">
+          <div class="card-title">Included: High-Signal Navigation</div>
+          <div class="card-tag tag-teal">Included Features</div>
+          <ul class="bullet-list">
+            <li><strong>Dedicated Views:</strong> Activity Dashboard, 2-Pane Conversation Inbox, 21 Aug Manager Brief, Exports &amp; Manifest Inspector, Replay Tester.</li>
+            <li><strong>Role Separation:</strong> Distinct separation between call reps (<span class="code-pill">rep_name</span>) and meeting organizers (<span class="code-pill">organizer_email != salesperson/attendee</span>).</li>
+            <li><strong>Interactive Overrides:</strong> Instant route reassignment buttons with visual "Override" badges and preserved manual state.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Included: Transparent Denominators</div>
+          <div class="card-tag tag-blue">Metric Clarity</div>
+          <ul class="bullet-list">
+            <li><strong>Transcript Coverage:</strong> Displayed honestly as 18/44 (40.9%) post-update (calls: 10/30, meetings: 8/14). Zero hiding of 26 unrecorded records.</li>
+            <li><strong>Connection Rate:</strong> Factual 11/30 (36.7%) based strictly on source <span class="code-pill">is_connected</span> flag, separated from full conversations.</li>
+            <li><strong>Freshness Tags:</strong> "Stale" badge displayed if an update replaces underlying text.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Deliberately Rejected Decision &amp; Omissions</div>
+        <div class="card-tag tag-amber">Rejected Alternative &amp; Accepted Trade-off</div>
+        <ul class="bullet-list">
+          <li><strong>REJECTED: Projected Pipeline Valuation &amp; Rep Revenue Leaderboards</strong>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;"><em>Considered:</em> Extrapolating dollar deal values from transcript mentions (e.g. $260 partner bounty in M01 or software quotes in M02) to create a cumulative pipeline chart.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;"><em>Why rejected:</em> DATA_CONTRACT and brief state no CRM opportunity table, win probability, or historical baseline exists. Fabricating contract values produces dangerous false precision and misdirects executive focus.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #0d9488; font-weight: 600;"><em>Accepted Trade-off:</em> Focus on verified operational milestones (contact reached, proposal requested, follow-up scheduled) with clear named owners.</p>
+          </li>
+          <li style="margin-top: 10px;"><strong>OMITTED: Redundant Date Picker:</strong> All records occur on 21 August 2026. A calendar filter creates useless UI friction; replaced by Rep and Source Type filters.</li>
+          <li style="margin-top: 10px;"><strong>OMITTED: Generic Summaries:</strong> Suppressed AI summarization on records without usable audio (marked explicitly as <span class="code-pill">no-content</span>).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <div class="header">
+      <div class="title-area">
+        <h1>3. Routing Taxonomy, Folder Organization &amp; Difficult Case</h1>
+        <p>Multi-Destination Routing without Context Loss &amp; Managing Ambiguity</p>
+      </div>
+      <div class="badge-slide">SLIDE 3 OF 5</div>
+    </div>
+    <div class="grid-2">
+      <div class="col-stack">
+        <div class="card">
+          <div class="card-title">Seven Actionable Route Destinations</div>
+          <div class="card-tag tag-blue">Taxonomy Design</div>
+          <ul class="bullet-list">
+            <li><span class="code-pill">sales_coaching</span> (6 records): Cold objection handling, pitch technique.</li>
+            <li><span class="code-pill">deal_next_steps</span> (6 records): Commercial qualification &amp; proposals.</li>
+            <li><span class="code-pill">customer_followup</span> (3 records): Support, migrations, bug resolution.</li>
+            <li><span class="code-pill">vendor_partner</span> (3 records): Advisory partnerships &amp; reseller agreements.</li>
+            <li><span class="code-pill">internal_ops</span> (1 record): Internal billing workflow training (M10).</li>
+            <li><span class="code-pill">no_content</span> (26 records): Short dials, voicemails, silent recordings.</li>
+            <li><span class="code-pill">needs_review</span> (0 records post-classification; intake holding state).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Export Organization &amp; Manifest</div>
+          <div class="card-tag tag-teal">Export Architecture</div>
+          <ul class="bullet-list">
+            <li><strong>Multi-Folder Preservation:</strong> Conversations serving multiple purposes (e.g. M02) export distinct markdown files to each folder without losing context.</li>
+            <li><strong>Machine-Readable Manifests:</strong> <span class="code-pill">manifest.json</span> and <span class="code-pill">manifest.csv</span> record source_id, revision, routes, file paths, and override status.</li>
+            <li><strong>In-Browser ZIP:</strong> Pure JS ZIP builder downloads the 45-file tree directly.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">The Difficult Routing Case: Meeting M02</div>
+        <div class="card-tag tag-amber">Edge Case Analysis</div>
+        <ul class="bullet-list">
+          <li><strong>Subject:</strong> Crestview Partners / SpendNest Discussion (Record M02)</li>
+          <li><strong>The Routing Conflict:</strong> Is this an Advisory Partnership or a Direct Sales Deal?
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">• <em>Partner Dimension:</em> Discussion focuses on referring overseas accounting clients and signing an advisory partnership memorandum.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">• <em>Direct Deal Dimension:</em> Partner asks for a SpendNest corporate account for their own firm, specifically requesting a quote for 40 virtual cards.</p>
+          </li>
+          <li><strong>Resolution &amp; Trade-off:</strong>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">Single-category routing would discard critical commercial context (either the partnership or the 40-card deal).</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #0d9488; font-weight: 600;">Resolution: Dual-routed to both <span class="code-pill">vendor_partner</span> and <span class="code-pill">deal_next_steps</span>.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">Exports cleanly to both <span class="code-pill">exports/vendor_partner/M02_meeting.md</span> and <span class="code-pill">exports/deal_next_steps/M02_meeting.md</span>.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">Manifest verifies <span class="code-pill">output_paths</span> contains both paths, preventing cross-team dropped balls.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <div class="header">
+      <div class="title-area">
+        <h1>4. Number Verification &amp; Analytical Evidence Tracing</h1>
+        <p>Auditing Metrics Against Source Payloads and Grounding Conclusions</p>
+      </div>
+      <div class="badge-slide">SLIDE 4 OF 5</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Audit of Key Metrics &amp; Calculations</div>
+        <div class="card-tag tag-blue">Mathematical Verification</div>
+        <ul class="bullet-list">
+          <li><strong>44 Unique Source Records:</strong>
+            <br>• Total raw records across both batches: 45 (44 in initial + 1 in update).
+            <br>• Key <span class="code-pill">(source_type, source_id)</span> deduplication yields exactly 44 unique items.
+            <br>• 30 Calls: 20 short/unresponsive dials (B01-B20) + 10 calls with transcripts (C01-C10).
+            <br>• 14 Meetings: 8 with speech text (M01-M04, M06, M07, M09, M10) + 6 silent/cancelled (M05, M08, M11-M14).
+          </li>
+          <li><strong>Connection Rate Calculation:</strong>
+            <br>• Source payload <span class="code-pill">is_connected</span>: 11 True (B11, B14, C01-C03, C05-C10) / 30 calls = <strong>36.67%</strong>.
+            <br>• Full conversations (<span class="code-pill">is_conversation=True</span>): 9 calls / 30 = <strong>30.0%</strong>.
+          </li>
+          <li><strong>Usable Transcript Coverage:</strong>
+            <br>• Initial batch: 17/44 (38.64%).
+            <br>• Post-update batch: 18/44 (40.91%) after M07 transcript arrives.
+            <br>• All denominators verified directly from JSON source payloads.
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Tracing Analytical Conclusions to Evidence</div>
+        <div class="card-tag tag-teal">Source Evidence Tracing</div>
+        <ul class="bullet-list">
+          <li><strong>Coaching Conclusion: Meera (Calls C05, C06, C08, C09, C10)</strong>
+            <br>• <em>Evidence:</em> In Call C06 (Mr Nikhil), Meera opens with: <em>"I'll say at the start that this is a cold call. Could I take about forty seconds to explain the purpose?"</em>
+            <br>• <em>Manager Deduction:</em> Strong, honest pitch discipline; however, prospects frequently state existing solutions (StoreHarbor, internal ERP). Coaching priority: pivot from feature listing to pain-point discovery.
+          </li>
+          <li><strong>Operational Risk Conclusion: Back-Office Billing (M10)</strong>
+            <br>• <em>Evidence:</em> Trainer notes: <em>"Clearing the payment without checking that date can leave the next cycle wrong."</em> (M10, turn 7).
+            <br>• <em>Manager Deduction:</em> Wallet top-up alone does not fix frozen accounts; manual date synchronization is required.
+          </li>
+          <li><strong>Late Transcript Resolution (M07 - Revision 2)</strong>
+            <br>• Initial state: No transcript. Update state: 28 turns arrive detailing Cedarwave Migration.
+            <br>• <em>Verification:</em> Identity check preserved manual route; fresh text successfully displayed without duplicate record creation.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <div class="header">
+      <div class="title-area">
+        <h1>5. Trade-offs, AI Usage, Limitations &amp; Future Roadmap</h1>
+        <p>Honest Evaluation of Architectural Choices and Next Iterations</p>
+      </div>
+      <div class="badge-slide">SLIDE 5 OF 5</div>
+    </div>
+    <div class="grid-2">
+      <div class="col-stack">
+        <div class="card">
+          <div class="card-title">Architectural Trade-offs &amp; Decisions</div>
+          <div class="card-tag tag-blue">Architecture</div>
+          <ul class="bullet-list">
+            <li><strong>Client-Side Standalone:</strong> Zero-install HTML/CSS/JS with in-memory Map store. Eliminates API key leakage, complex setup, and runtime failure; reviewers open <span class="code-pill">index.html</span> immediately in any modern browser.</li>
+            <li><strong>Multi-Route Duplication:</strong> Exporting dual-assigned records into multiple folders ensures independent team visibility, accepting slight disk redundancy.</li>
+            <li><strong>Idempotent Revision Logic:</strong> Revisions strictly compared; older revisions safely discarded without overwriting manual overrides.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">AI Disclosure &amp; Runtime Division</div>
+          <div class="card-tag tag-teal">AI Usage Boundary</div>
+          <ul class="bullet-list">
+            <li><strong>Pre-Generated Analysis:</strong> Analysis summaries, quotations, and next actions were pre-generated with AI assistance and stored in <span class="code-pill">data.js</span>.</li>
+            <li><strong>Dynamic Runtime Operations:</strong> Deduplication, revision resolution, metric aggregation, route assignment, manual overrides, search, filtering, manifest compilation, and ZIP archiving all execute dynamically in pure JavaScript.</li>
+            <li><strong>Stale Analysis Flagging:</strong> Dynamic flag warns managers when underlying transcripts change without refreshed AI analysis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Known Limitations &amp; What to Build Next</div>
+        <div class="card-tag tag-amber">Roadmap &amp; Limitations</div>
+        <ul class="bullet-list">
+          <li><strong>Known Limitations:</strong>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">• <em>Absence of CRM Directory:</em> Cannot cross-reference caller numbers to CRM account histories or verified account values.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">• <em>In-Memory State:</em> Refreshing the browser re-evaluates bundled batches; cross-session persistence would benefit from IndexedDB.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #475569;">• <em>Single-Day Scope:</em> All activity falls on 21 August 2026. Trend forecasting requires multi-week time-series data.</p>
+          </li>
+          <li style="margin-top: 10px;"><strong>Unfinished Work / Next Roadmap Items:</strong>
+            <p style="margin-top: 4px; font-size: 9pt; color: #0d9488; font-weight: 600;">1. Live LLM Reprompting:</p>
+            <p style="margin-left: 10px; font-size: 8.5pt; color: #475569;">Connect an optional private LLM gateway to dynamically regenerate summaries when late transcripts arrive (e.g. M07).</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #0d9488; font-weight: 600;">2. Webhook Ingestion Pipeline:</p>
+            <p style="margin-left: 10px; font-size: 8.5pt; color: #475569;">Build a REST intake endpoint validating DATA_CONTRACT schemas for real-time telephony feeds.</p>
+            <p style="margin-top: 4px; font-size: 9pt; color: #0d9488; font-weight: 600;">3. Rep Coaching Workflow Tracker:</p>
+            <p style="margin-left: 10px; font-size: 8.5pt; color: #475569;">Enable managers to leave timestamped audio coaching comments linked directly to transcript turns.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: spendnest-revenue-intelligence
+    env: static
+    buildCommand: ""
+    staticPublishPath: ./candidate/app
